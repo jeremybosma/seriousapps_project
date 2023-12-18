@@ -4,20 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles.css">
-    <title>Game Menu</title>
+    <link rel="stylesheet" href="menu.css">
+    <title>main menu</title>
 </head>
 
 <body>
-    <div class="menu">
+    <Section class="title_plaats">
         <h1 class="title">Game Naam</h1>
+    </Section>
 
-        <div>
-            <a href="slide.html"><button>Spelen</button></a>
-            <a href="settings.html"><button>Opties</button></a>
-            <a href="credits.html"><button>Credits</button></a>
-        </div>
-    </div>
+    <section class="empty_space">
+        <div></div>
+    </section>
+
+    <section class="knoppen_platsen">
+        <!-- spelen knop -->
+            <button class="buttons spelen_knop">
+                <a href="slide.html" class="button_text">Story</a>
+            </button>
+        <!-- Opties knop -->
+            <button class="buttons opties_knop">
+                <a href="settings.html" class="button_text">Settings</a>
+            </button>
+        <!-- Credits knop-->
+            <button class="buttons credits_knop">
+                <a href="credits.html" class="button_text">Credits</a>
+            </button>
+    </section>
 </body>
 
 </html>
