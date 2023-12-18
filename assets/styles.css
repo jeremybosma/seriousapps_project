@@ -1,0 +1,144 @@
+:root {
+    --primary-color: #ffffff;
+    --text: #000000;
+    --stroke: #e9e9e9;
+
+    --shadow: rgba(0, 0, 0, 0.2);
+}
+[data-theme="dark"] {
+    --primary-color: #1a1a1a;
+    --text: #ffffff;
+    --stroke: #333333;
+
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    color: var(--text);
+}
+
+button {
+    background-color: var(--stroke);
+    padding: 5px 10px;
+    height: 35px;
+    border-radius: 8px;
+    border: var(--stroke);
+    transition: 0.5s;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--stroke);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 25px;
+    text-align: center;
+}
+
+.subtitles {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    min-width: 350px;
+    height: auto;
+    pointer-events: none;
+    z-index: 999;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow);
+    display: flex;
+    flex-wrap: wrap;
+    /* Add this line */
+    padding: 0px 10px;
+    transition: 0.5s;
+}
+
+.floating-navigation {
+    position: fixed;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 50px;
+    z-index: 1000;
+    background-color: var(--primary-color);
+    border-radius: 25px;
+    box-shadow: 0 2px 4px var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    transition: 0.5s;
+}
+
+.floating-navigation span {
+    pointer-events: none;
+}
+
+.floating-navigation button {
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    border: var(--stroke);
+}
+
+.floating-navigation button:hover {
+    cursor: pointer;
+    background-color: var(--stroke);
+}
+
+img {
+    width: 100%;
+    transition: 1s;
+}
+
+.credits {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 25px;
+    text-align: center;
+}
+
+.credits a {
+    font-size: 20px;
+    color: var(--text);
+}
+
+.setting {
+    justify-content: center;
+    display: flex;
+    gap: space-between;
+    width: 50%;
+}
+
+hr {
+    border: 1px solid var(--stroke);
+    width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    .subtitles {
+        font-size: 16px;
+        top: 65% !important;
+    }
+
+    .floating-navigation {
+        top: 90% !important;
+    }
+}

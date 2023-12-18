@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <title>Game Slide</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+    <div>
+        <img id="scene">
+    </div>
+
+    <div class="subtitles">
+        <p id="subtitles-text"></p>
+    </div>
+
+    <div class="floating-navigation">
+        <a onclick="previousSlide()"><button>←</button></a>
+        <span>Slide <span id="slide"></span></span>
+        <a onclick="nextSlide()"><button>→</button></a>
+    </div>
+
+    <script src="assets/js/slideshow.js"></script>
+</body>
+
+</html>
