@@ -1,16 +1,18 @@
-*{
+* {
     margin: 0 auto;
     background-color: black;
 }
-.BG{
+
+.BG {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     width: 100vw;
-    
+
 }
-.X{
+
+.X {
     /* border: 2px solid aqua; */
     display: grid;
     height: 700px;
@@ -21,51 +23,61 @@
     margin-bottom: 400px;
 
 }
-.log1{
+
+.log1 {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     /* background-color: rgb(51, 255, 0); */
 }
-.log2{
+
+.log2 {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     /* background-color: rgb(255, 0, 0); */
 }
-.log3{
+
+.log3 {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     /* background-color: aqua; */
 }
-.logo{
+
+.logo {
     max-width: 500px;
     animation: moveu 4s inherit;
     animation-delay: 0s;
 }
+
 @keyframes moveup {
-    from{
+    from {
         height: 90px;
-        
-    }to{
+
+    }
+
+    to {
         height: 800px;
     }
-    
-    
+
+
 }
+
 @keyframes moveu {
-    from{
+    from {
         height: 50px;
-        
-    }to{
+
+    }
+
+    to {
         height: 300px;
     }
-    
-    
+
+
 }
 
 
@@ -77,83 +89,82 @@
 
 
 
-@media only screen and (max-width: 864px){
-    .X{
+@media only screen and (max-width: 864px) {
+    .X {
         /* border: 2px solid rgb(255, 255, 255); */
         display: grid;
         height: 800px;
         width: 400px;
         grid-template-rows: 33.33333% 33.33333% 33.33333%;
         margin-bottom: 250px;
-    
+
     }
-    .logo{
+
+    .logo {
         max-width: 300px;
     }
-    .log1{
+
+    .log1 {
         display: grid;
-        grid-column:1 / 4;
-        grid-row: 1 / 2 ;
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
         width: 100%;
         margin-bottom: 20px;
         /* background-color: rgb(51, 255, 0); */
     }
-    .log2{
+
+    .log2 {
         display: grid;
-        grid-column:1 / 4;
-        grid-row: 2/ 3 ;
+        grid-column: 1 / 4;
+        grid-row: 2/ 3;
         width: 100%;
         /* background-color: rgb(255, 0, 0); */
     }
-    .log3{
+
+    .log3 {
         display: grid;
-        grid-column:1 / 4;
-        grid-row: 3 / 4 ;
+        grid-column: 1 / 4;
+        grid-row: 3 / 4;
         width: 100%;
         /* background-color: aqua; */
     }
-    .logo{
+
+    .logo {
         max-width: 500px;
         animation: moveu 3.5s cubic-bezier(0, 0, 0, 1);
         animation-delay: 0s;
     }
+
     @keyframes moveup {
-        from{
+        from {
             height: 90px;
-            
-        }to{
+
+        }
+
+        to {
             height: 800px;
         }
-        
-        
+
+
     }
+
     @keyframes moveu {
-        from{
+        from {
             height: 50px;
-            
-        }to{
+
+        }
+
+        to {
             height: 300px;
         }
-        
-        
+
+
     }
-    
+
 
 }
 
 
 
 
-@media only screen and (max-width: 481px){
-
-}
-
-
-
-
-
-
-
-
-
-
+@media only screen and (max-width: 481px) {}
