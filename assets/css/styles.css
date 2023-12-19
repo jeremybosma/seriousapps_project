@@ -117,6 +117,10 @@ img {
     color: var(--primary-color);
 }
 
+.credits a:hover {
+    color: var(--stroke);
+}
+
 .setting {
     justify-content: center;
     display: flex;
