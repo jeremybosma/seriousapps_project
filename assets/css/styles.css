@@ -7,10 +7,14 @@
 }
 
 body {
-    background-color: var(--primary-color);
+    background-color: #0c486c;
     font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
     color: var(--text);
+}
+
+h1 {
+    color: var(--primary-color);
 }
 
 button {
@@ -95,6 +99,7 @@ button:hover {
 img {
     width: 100%;
     transition: 1s;
+    color: var(--primary-color);
 }
 
 .credits {
@@ -110,7 +115,7 @@ img {
 
 .credits a {
     font-size: 20px;
-    color: var(--text);
+    color: var(--primary-color);
 }
 
 .setting {

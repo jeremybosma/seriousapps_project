@@ -13,7 +13,6 @@
 }
 
 .X {
-    /* border: 2px solid aqua; */
     display: grid;
     height: 700px;
     width: 1600px;
@@ -24,31 +23,11 @@
 
 }
 
-.log1 {
+img {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* background-color: rgb(51, 255, 0); */
-}
-
-.log2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    /* background-color: rgb(255, 0, 0); */
-}
-
-.log3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    /* background-color: aqua; */
-}
-
-.logo {
     max-width: 500px;
     animation: moveu 4s inherit;
     animation-delay: 0s;
@@ -79,15 +58,6 @@
 
 
 }
-
-
-
-
-
-
-
-
-
 
 @media only screen and (max-width: 864px) {
     .X {
@@ -160,11 +130,6 @@
 
 
     }
-
-
 }
-
-
-
 
 @media only screen and (max-width: 481px) {}

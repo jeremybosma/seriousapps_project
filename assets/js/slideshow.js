@@ -43,7 +43,7 @@ function previousSlide() {
         typeWriter();
         updateSlideNumber();
     } else if (currentSlide < 1) {
-        window.location.href = 'index.html';
+        window.location.href = 'menu.html';
     }
 }
 
