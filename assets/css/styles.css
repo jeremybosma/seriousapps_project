@@ -131,13 +131,6 @@ img {
     color: var(--stroke);
 }
 
-.setting {
-    justify-content: center;
-    display: flex;
-    gap: space-between;
-    width: 50%;
-}
-
 hr {
     border: 1px solid var(--stroke);
     width: 50%;
