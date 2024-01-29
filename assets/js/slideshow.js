@@ -1,42 +1,70 @@
-var i = 0;
-var currentSlide = 0;
+let i = 0;
+let currentSlide = 0;
 
-var slides = [
-    ['Subtitle for Slide 1', 'assets/scenes/scene1.jpg'],
-    ['Subtitle for Slide 2', 'assets/scenes/scene2.jpg'],
-    ['Subtitle for Slide 3', 'assets/scenes/scene3.jpg'],
-    ['Subtitle for Slide 4', 'assets/scenes/scene4.jpg'],
-    ['Subtitle for Slide 5', 'assets/scenes/scene5.jpg'],
-    ['Subtitle for Slide 6', 'assets/scenes/scene6.jpg'],
-    ['Subtitle for Slide 7', 'assets/scenes/scene7.jpg'],
-    ['Subtitle for Slide 8', 'assets/scenes/scene8.jpg']
-];
+let slides = {
+    begin: [
+        ['Context: De werkweek begon voor Fred met een gezonde dosis motivatie. Als beveiligingsexpert bij het grote technologiebedrijf was hij vastbesloten om zijn collega\'s te beschermen tegen de toenemende dreiging van phishing-aanvallen. De berichten stroomden binnen, en Fred begon zijn taak met zorgvuldige aandacht.', 'assets/scenes/scene1.jpg'],
+    ],
+    middenstuk: [
+        ['Fred: "Deze phishing-pogingen lijken serieuzer te worden. Ik moet extra voorzichtig zijn.', 'assets/scenes/scene1.jpg'],
+    ],
+    eerste_dag_voorzichtig: [
+        ['Fred: "Aan het einde van de dag keek hij tevreden naar zijn werk en sprak bemoedigend: "Ik heb vandaag goed werk verricht, laten we deze focus behouden.""', 'assets/scenes/scene1.jpg'],
+    ],
+    eerste_dag_risico: [
+        ['Fred: "Ach, het zal wel meevallen. Ik neem wel wat meer risico vandaag."', 'assets/scenes/scene1.jpg'],
+    ],
+    tweede_dag: [
+        ['Context: De vermoeidheid van de eerste dag hing nog steeds in de lucht op de tweede dag, maar Fred hield zich vast aan zijn toewijding. De phishing-mails bleven binnenstromen, maar Fred was vastberaden om zijn alertheid te behouden.', 'assets/scenes/scene1.jpg'],
+        ['Context: Halverwege de dag ontving hij een ogenschijnlijk onschuldige e-mail met een link naar een \'belangrijk document\'.', 'assets/scenes/scene2.jpg'],
+    ],
+    tweede_dag_voorzichtig: [
+        ['Fred: "Hmm, laten we dit eens goed bekijken."', 'assets/scenes/scene1.jpg'],
+    ],
+    tweede_dag_risico: [
+        ['Fred: "Ik ben te moe voor dit. Snel afhandelen en klaar."', 'assets/scenes/scene1.jpg'],
+    ],
+    einde_voorzichtig: [
+        ['Context: Ondanks de vermoeidheid op de tweede dag blijft Fred alert en scherp. Hij herkent de poging tot phishing en rapporteert deze onmiddellijk aan de IT-afdeling.', 'assets/scenes/scene1.jpg'],
+        ['Fred: "Deze poging tot phishing is sluw, maar ik ben er niet ingetrapt."', 'assets/scenes/scene1.jpg'],
+        ['Context: Fred deelt zijn ervaring met zijn \'collega\'s\' (ook al is hij alleen) en moedigt hen aan om waakzaam te blijven.', 'assets/scenes/scene1.jpg'],
+        ['Fred: "We moeten constant alert zijn. Samen kunnen we deze cyberdreigingen bestrijden."', 'assets/scenes/scene1.jpg'],
+        ['Context: Aan het einde van de dag spreekt hij tevreden: "We hebben opnieuw bewezen dat waakzaamheid het verschil maakt. Laten we blijven leren en groeien, en zo onze organisatie blijven beschermen."', 'assets/scenes/scene1.jpg'],
+    ],
+    einde_risico: [
+        ['Context: In zijn vermoeide toestand op de tweede dag merkt Fred de phishing-poging niet op. Hij klikt onbewust op de link en probeert in te loggen met zijn accountinformatie.', 'assets/scenes/scene1.jpg'],
+        ['Fred: "Even doorklikken en dan kan ik eindelijk rusten."', 'assets/scenes/scene2.jpg'],
+        ['Context: De hackers krijgen snel toegang tot zijn account, en de gevolgen zijn verstrekkend.', 'assets/scenes/scene3.jpg'],
+        ['Fred: "Laat me gewoon mijn werk afmaken en dan kan ik eindelijk rusten."', 'assets/scenes/scene1.jpg'],
+        ['Context: Persoonlijke informatie wordt gestolen en misbruikt voor duistere doeleinden. Het slechte einde is een feit, en de organisatie is kwetsbaar voor verdere aanvallen.', 'assets/scenes/scene3.jpg'],
+    ],
+};
 
 function typeWriter() {
     const subtitleText = document.getElementById("subtitles-text");
-    const subtitle = slides[currentSlide][0];
+    const subtitle = slides.begin[currentSlide][0];
 
     if (i < subtitle.length) {
         subtitleText.innerHTML += subtitle.charAt(i);
         i++;
-        setTimeout(typeWriter, 15);
+        setTimeout(typeWriter, 10);
     }
 }
 
 function updateSlideNumber() {
     document.getElementById("slide").innerHTML = currentSlide + 1;
-    document.getElementById("scene").src = slides[currentSlide][1];
+    document.getElementById("scene").src = slides.begin[currentSlide][1];
     document.getElementById("scene").alt = "Slide " + (currentSlide + 1);
 }
 
 function navigateSlide(direction) {
     if (direction === 'previous' && currentSlide > 0) {
         currentSlide--;
-    } else if (direction === 'next' && currentSlide < slides.length - 1) {
+    } else if (direction === 'next' && currentSlide < slides.begin.length - 1) {
         currentSlide++;
     } else if (direction === 'previous' && currentSlide === 0) {
         window.location.href = 'menu.html';
-    } else if (currentSlide === slides.length - 1) {
+    } else if (currentSlide === slides.begin.length - 1) {
         window.location.href = 'credits.html';
     }
 

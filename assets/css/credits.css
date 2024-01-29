@@ -42,6 +42,16 @@ section {
     height: 100%;
 }
 
+button {
+    background-color: var(--stroke);
+    padding: 5px 10px;
+    height: 35px;
+    border-radius: 8px;
+    border: var(--stroke);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
 @media only screen and (min-width: 600px) {
     .container {
         max-width: 400px;
