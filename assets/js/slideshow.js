@@ -16,19 +16,25 @@ const slides = {
     ],
     eerste_dag_voorzichtig: [
         ['"Aan het einde van de dag keek hij tevreden naar zijn werk en sprak bemoedigend: "Ik heb vandaag goed werk verricht, laten we deze focus behouden."', 'assets/scenes/scene1.png', 'Fred'],
+        ['De vermoeidheid van de eerste dag hing nog steeds in de lucht op de tweede dag, maar Fred hield zich vast aan zijn toewijding. De phishing-mails bleven binnenstromen, maar Fred was vastberaden om zijn alertheid te behouden.', 'assets/scenes/scene1.png', 'Context'],
+        ['Halverwege de dag ontving hij een ogenschijnlijk onschuldige e-mail met een link naar een \'belangrijk document\'.', 'assets/scenes/scene1.png', 'Context'],
     ],
     eerste_dag_risico: [
         ['"Ach, het zal wel meevallen. Ik neem wel wat meer risico vandaag."', 'assets/scenes/scene1.png', 'Fred'],
-    ],
-    tweede_dag: [
-        ['De vermoeidheid van de eerste dag hing nog steeds in de lucht op de tweede dag, maar Fred hield zich vast aan zijn toewijding. De phishing-mails bleven binnenstromen, maar Fred was vastberaden om zijn alertheid te behouden.', 'assets/scenes/scene1.png', 'Context'],
-        ['Halverwege de dag ontving hij een ogenschijnlijk onschuldige e-mail met een link naar een \'belangrijk document\'.', 'assets/scenes/scene1.png', 'Context'],
+        ['In zijn vermoeide toestand op de tweede dag merkt Fred de phishing-poging niet op. Hij klikt onbewust op de link en probeert in te loggen met zijn accountinformatie.', 'assets/scenes/scene1.png', 'Context'],
+        ['"Even doorklikken en dan kan ik eindelijk rusten."', 'assets/scenes/scene1.png', 'Fred'],
+        ['De hackers krijgen snel toegang tot zijn account, en de gevolgen zijn verstrekkend.', 'assets/scenes/scene1.png', 'Context'],
+        ['Persoonlijke informatie wordt gestolen en misbruikt voor duistere doeleinden. Het slechte einde is een feit, en de organisatie is kwetsbaar voor verdere aanvallen.', 'assets/scenes/scene1.png', 'Context'],
     ],
     tweede_dag_voorzichtig: [
         ['"Hmm, laten we dit eens goed bekijken."', 'assets/scenes/scene1.png', 'Fred'],
     ],
     tweede_dag_risico: [
         ['"Ik ben te moe voor dit. Snel afhandelen en klaar."', 'assets/scenes/scene1.png', 'Fred'],
+        ['In zijn vermoeide toestand op de tweede dag merkt Fred de phishing-poging niet op. Hij klikt onbewust op de link en probeert in te loggen met zijn accountinformatie.', 'assets/scenes/scene1.png', 'Context'],
+        ['"Even doorklikken en dan kan ik eindelijk rusten."', 'assets/scenes/scene1.png', 'Fred'],
+        ['De hackers krijgen snel toegang tot zijn account, en de gevolgen zijn verstrekkend.', 'assets/scenes/scene1.png', 'Context'],
+        ['Persoonlijke informatie wordt gestolen en misbruikt voor duistere doeleinden. Het slechte einde is een feit, en de organisatie is kwetsbaar voor verdere aanvallen.', 'assets/scenes/scene1.png', 'Context'],
     ],
     einde_voorzichtig: [
         ['Ondanks de vermoeidheid op de tweede dag blijft Fred alert en scherp. Hij herkent de poging tot phishing en rapporteert deze onmiddellijk aan de IT-afdeling.', 'assets/scenes/scene1.png', 'Context'],
@@ -36,13 +42,6 @@ const slides = {
         ['Fred deelt zijn ervaring met zijn \'collega\'s\' (ook al is hij alleen) en moedigt hen aan om waakzaam te blijven.', 'assets/scenes/scene1.png', 'Context'],
         ['"We moeten constant alert zijn. Samen kunnen we deze cyberdreigingen bestrijden."', 'assets/scenes/scene1.png', 'Fred'],
         ['Aan het einde van de dag spreekt hij tevreden: "We hebben opnieuw bewezen dat waakzaamheid het verschil maakt. Laten we blijven leren en groeien, en zo onze organisatie blijven beschermen."', 'assets/scenes/scene1.png', 'Context'],
-    ],
-    einde_risico: [
-        ['In zijn vermoeide toestand op de tweede dag merkt Fred de phishing-poging niet op. Hij klikt onbewust op de link en probeert in te loggen met zijn accountinformatie.', 'assets/scenes/scene1.png', 'Context'],
-        ['"Even doorklikken en dan kan ik eindelijk rusten."', 'assets/scenes/scene1.png', 'Fred'],
-        ['De hackers krijgen snel toegang tot zijn account, en de gevolgen zijn verstrekkend.', 'assets/scenes/scene1.png', 'Context'],
-        ['"Laat me gewoon mijn werk afmaken en dan kan ik eindelijk rusten."', 'assets/scenes/scene1.png', 'Fred'],
-        ['Persoonlijke informatie wordt gestolen en misbruikt voor duistere doeleinden. Het slechte einde is een feit, en de organisatie is kwetsbaar voor verdere aanvallen.', 'assets/scenes/scene1.png', 'Context'],
     ],
 };
 
@@ -73,21 +72,14 @@ function navigateSlide(direction) {
     if (direction === 'previous' && currentSlide > 0) {
         currentSlide--;
     } else if (direction === 'next' && currentSlide < currentSlideArray.length - 1) {
-        if (currentSlideArray[2]) {
+        if (currentSlideArray === currentSlideArray[1] && currentSlide === currentSlideArray.length - 1) {
             currentSlideArray = slides.tweede_dag;
             currentSlide = 0;
-        } else if (currentSlideArray === slides.eerste_dag_risico[1]) {
-            currentSlideArray = slides.einde_risico;
-            currentSlide = 0;
-        } else if (currentSlideArray === slides.tweede_dag_voorzichtig[1]) {
-            currentSlideArray = slides.einde_voorzichtig;
-            currentSlide = 0;
-        } else {
-            currentSlide++;
         }
+        currentSlide++;
     } else if (direction === 'previous' && currentSlideArray === slides.begin && currentSlide === 0) {
         window.location.href = 'menu.html';
-    } else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.einde_risico[1][0]) || (currentSlideArray === slides.einde_risico && currentSlideArray[currentSlide][0] === slides.einde_voorzichtig[1][0])) {
+    } else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.einde_voorzichtig[1][0]) || (currentSlideArray === slides.einde_voorzichtig && currentSlideArray[currentSlide][0] === slides.einde_voorzichtig[1][0])) {
         window.location.href = 'credits.html';
     } else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.begin[1][0]) || (currentSlideArray === slides.begin && currentSlideArray[currentSlide][0] === slides.tweede_dag[1][0])) {
         optionsElement.style.display = "flex";
@@ -128,7 +120,7 @@ document.addEventListener('keydown', function (event) {
         return;
     } else if (event.code === 'ArrowLeft' || event.code === 'ArrowDown') {
         navigateSlide('previous');
-    } else if (event.code === 'ArrowRight' || event.code === 'ArrowUp') {
+    } else if (event.code === 'ArrowRight' || event.code === 'ArrowUp' || event.code === 'Space') {
         navigateSlide('next');
     }
 });
