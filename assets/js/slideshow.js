@@ -1,9 +1,12 @@
-const optionsElement = document.getElementsByClassName("options")[0];
+const optionsElement = document.querySelector(".options");
+const subtitleText = document.getElementById("subtitles-text");
+const slideNumberElement = document.getElementById("slide");
+const sceneElement = document.getElementById("scene");
 
 let i = 0;
 let currentSlide = 0;
 
-let slides = {
+const slides = {
     begin: [
         ['Context: De werkweek begon voor Fred met een gezonde dosis motivatie. Als beveiligingsexpert bij het grote technologiebedrijf was hij vastbesloten om zijn collega\'s te beschermen tegen de toenemende dreiging van phishing-aanvallen. De berichten stroomden binnen, en Fred begon zijn taak met zorgvuldige aandacht.', 'assets/scenes/scene1.jpg'],
         ['Fred: "Deze phishing-pogingen lijken serieuzer te worden. Ik moet extra voorzichtig zijn.', 'assets/scenes/scene1.jpg'],
@@ -43,8 +46,7 @@ let slides = {
 let currentSlideArray = slides.begin;
 
 function typeWriter() {
-    const subtitleText = document.getElementById("subtitles-text");
-    const subtitle = currentSlideArray[currentSlide] ? currentSlideArray[currentSlide][0] : 'Geen ondertiteling gevonden.';
+    const subtitle = currentSlideArray[currentSlide]?.[0] || 'Geen ondertiteling gevonden.';
 
     if (i < subtitle.length) {
         subtitleText.innerHTML += subtitle.charAt(i);
@@ -54,10 +56,10 @@ function typeWriter() {
 }
 
 function updateSlideNumber() {
-    document.getElementById("slide").innerHTML = currentSlide + 1;
+    slideNumberElement.innerHTML = currentSlide + 1;
     if (currentSlideArray[currentSlide]) {
-        document.getElementById("scene").src = currentSlideArray[currentSlide][1];
-        document.getElementById("scene").alt = "Slide " + (currentSlide + 1);
+        sceneElement.src = currentSlideArray[currentSlide][1];
+        sceneElement.alt = "Slide " + (currentSlide + 1);
     }
 }
 
@@ -77,17 +79,11 @@ function navigateSlide(direction) {
         } else {
             currentSlide++;
         }
-    }
-
-    else if (direction === 'previous' && currentSlideArray === slides.begin && currentSlide === 0) {
+    } else if (direction === 'previous' && currentSlideArray === slides.begin && currentSlide === 0) {
         window.location.href = 'menu.html';
-    }
-
-    else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.einde_risico[1][0]) || (currentSlideArray === slides.einde_risico && currentSlideArray[currentSlide][0] === slides.einde_voorzichtig[1][0])) {
+    } else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.einde_risico[1][0]) || (currentSlideArray === slides.einde_risico && currentSlideArray[currentSlide][0] === slides.einde_voorzichtig[1][0])) {
         window.location.href = 'credits.html';
-    }
-
-    else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.begin[1][0]) || (currentSlideArray === slides.begin && currentSlideArray[currentSlide][0] === slides.tweede_dag[1][0])) {
+    } else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.begin[1][0]) || (currentSlideArray === slides.begin && currentSlideArray[currentSlide][0] === slides.tweede_dag[1][0])) {
         optionsElement.style.display = "flex";
         if (direction === 'risico') {
             if (currentSlideArray === slides.begin) {
@@ -110,7 +106,7 @@ function navigateSlide(direction) {
         }
     }
 
-    document.getElementById("subtitles-text").innerHTML = '';
+    subtitleText.innerHTML = '';
     i = 0;
     typeWriter();
     updateSlideNumber();
