@@ -1,15 +1,15 @@
+const optionsElement = document.getElementsByClassName("options")[0];
+
 let i = 0;
 let currentSlide = 0;
 
 let slides = {
     begin: [
         ['Context: De werkweek begon voor Fred met een gezonde dosis motivatie. Als beveiligingsexpert bij het grote technologiebedrijf was hij vastbesloten om zijn collega\'s te beschermen tegen de toenemende dreiging van phishing-aanvallen. De berichten stroomden binnen, en Fred begon zijn taak met zorgvuldige aandacht.', 'assets/scenes/scene1.jpg'],
-    ],
-    middenstuk: [
         ['Fred: "Deze phishing-pogingen lijken serieuzer te worden. Ik moet extra voorzichtig zijn.', 'assets/scenes/scene1.jpg'],
     ],
     eerste_dag_voorzichtig: [
-        ['Fred: "Aan het einde van de dag keek hij tevreden naar zijn werk en sprak bemoedigend: "Ik heb vandaag goed werk verricht, laten we deze focus behouden.""', 'assets/scenes/scene1.jpg'],
+        ['Fred: "Aan het einde van de dag keek hij tevreden naar zijn werk en sprak bemoedigend: "Ik heb vandaag goed werk verricht, laten we deze focus behouden."', 'assets/scenes/scene1.jpg'],
     ],
     eerste_dag_risico: [
         ['Fred: "Ach, het zal wel meevallen. Ik neem wel wat meer risico vandaag."', 'assets/scenes/scene1.jpg'],
@@ -40,9 +40,11 @@ let slides = {
     ],
 };
 
+let currentSlideArray = slides.begin;
+
 function typeWriter() {
     const subtitleText = document.getElementById("subtitles-text");
-    const subtitle = slides.begin[currentSlide][0];
+    const subtitle = currentSlideArray[currentSlide] ? currentSlideArray[currentSlide][0] : 'Geen ondertiteling gevonden.';
 
     if (i < subtitle.length) {
         subtitleText.innerHTML += subtitle.charAt(i);
@@ -53,19 +55,56 @@ function typeWriter() {
 
 function updateSlideNumber() {
     document.getElementById("slide").innerHTML = currentSlide + 1;
-    document.getElementById("scene").src = slides.begin[currentSlide][1];
-    document.getElementById("scene").alt = "Slide " + (currentSlide + 1);
+    if (currentSlideArray[currentSlide]) {
+        document.getElementById("scene").src = currentSlideArray[currentSlide][1];
+        document.getElementById("scene").alt = "Slide " + (currentSlide + 1);
+    }
 }
 
 function navigateSlide(direction) {
     if (direction === 'previous' && currentSlide > 0) {
         currentSlide--;
-    } else if (direction === 'next' && currentSlide < slides.begin.length - 1) {
-        currentSlide++;
-    } else if (direction === 'previous' && currentSlide === 0) {
+    } else if (direction === 'next' && currentSlide < currentSlideArray.length - 1) {
+        if (currentSlideArray === slides.eerste_dag_voorzichtig) {
+            currentSlideArray = slides.tweede_dag;
+        } else if (currentSlideArray === slides.eerste_dag_risico) {
+            currentSlideArray = slides.einde_risico;
+        } else if (currentSlideArray === slides.tweede_dag_voorzichtig) {
+            currentSlideArray = slides.einde_voorzichtig;
+        } else {
+            currentSlide++;
+        }
+    }
+
+    else if (direction === 'previous' && currentSlideArray === slides.begin && currentSlide === 0) {
         window.location.href = 'menu.html';
-    } else if (currentSlide === slides.begin.length - 1) {
+    }
+
+    else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.einde_risico[1][0]) || (currentSlideArray === slides.einde_risico && currentSlideArray[currentSlide][0] === slides.einde_voorzichtig[1][0])) {
         window.location.href = 'credits.html';
+    }
+
+    else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.begin[1][0]) || (currentSlideArray === slides.begin && currentSlideArray[currentSlide][0] === slides.tweede_dag[1][0])) {
+        optionsElement.style.display = "flex";
+        if (direction === 'risico') {
+            if (currentSlideArray === slides.begin) {
+                optionsElement.style.display = "none";
+                currentSlideArray = slides.eerste_dag_risico;
+            } else if (currentSlideArray === slides.tweede_dag) {
+                optionsElement.style.display = "none";
+                currentSlideArray = slides.tweede_dag_risico;
+            }
+            currentSlide = 0;
+        } else if (direction === 'voorzichtig') {
+            if (currentSlideArray === slides.begin) {
+                optionsElement.style.display = "none";
+                currentSlideArray = slides.eerste_dag_voorzichtig;
+            } else if (currentSlideArray === slides.tweede_dag) {
+                optionsElement.style.display = "none";
+                currentSlideArray = slides.tweede_dag_voorzichtig;
+            }
+            currentSlide = 0;
+        }
     }
 
     document.getElementById("subtitles-text").innerHTML = '';
