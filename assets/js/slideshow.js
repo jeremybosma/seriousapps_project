@@ -67,10 +67,13 @@ function navigateSlide(direction) {
     } else if (direction === 'next' && currentSlide < currentSlideArray.length - 1) {
         if (currentSlideArray === slides.eerste_dag_voorzichtig) {
             currentSlideArray = slides.tweede_dag;
+            currentSlide = 0;
         } else if (currentSlideArray === slides.eerste_dag_risico) {
             currentSlideArray = slides.einde_risico;
+            currentSlide = 0;
         } else if (currentSlideArray === slides.tweede_dag_voorzichtig) {
             currentSlideArray = slides.einde_voorzichtig;
+            currentSlide = 0;
         } else {
             currentSlide++;
         }
