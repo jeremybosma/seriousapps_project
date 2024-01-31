@@ -4,16 +4,22 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8">
-    <title>Game naam - Story</title>
+    <title>Spammed - Story</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
+    <div class="options" id="options">
+        <a onclick="navigateSlide('voorzichtig')"><button style="background: white;">Wees Voorzichtig</button></a>
+        <a onclick="navigateSlide('risico')"><button style="background: white;">Neem Risico</button></a>
+    </div>
+
     <div>
         <img id="scene">
     </div>
 
     <div class="subtitles">
+        <p id="subtitles-naam"></p>
         <p id="subtitles-text"></p>
     </div>
 

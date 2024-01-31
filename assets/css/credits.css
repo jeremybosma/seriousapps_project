@@ -39,6 +39,7 @@ section {
     height: 100%;
 }
 
+<<<<<<< HEAD
 button {
     border-radius: 25px;
     margin-left: 9.5%;
@@ -51,6 +52,23 @@ button {
 button:hover{
     background: #0c486c;
     color: white;
+=======
+.text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+button {
+    background-color: var(--stroke);
+    padding: 5px 10px;
+    height: 35px;
+    border-radius: 8px;
+    border: var(--stroke);
+    transition: 0.5s;
+>>>>>>> 7e3a64746ce716065c95c78541f2f41692d225a2
     cursor: pointer;
 }
 
