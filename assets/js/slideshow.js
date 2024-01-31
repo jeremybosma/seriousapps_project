@@ -28,6 +28,11 @@ const slides = {
     ],
     tweede_dag_voorzichtig: [
         ['"Hmm, laten we dit eens goed bekijken."', 'assets/scenes/scene1.png', 'Fred'],
+        ['Ondanks de vermoeidheid op de tweede dag blijft Fred alert en scherp. Hij herkent de poging tot phishing en rapporteert deze onmiddellijk aan de IT-afdeling.', 'assets/scenes/scene1.png', 'Context'],
+        ['"Deze poging tot phishing is sluw, maar ik ben er niet ingetrapt."', 'assets/scenes/scene1.png', 'Fred'],
+        ['Fred deelt zijn ervaring met zijn \'collega\'s\' (ook al is hij alleen) en moedigt hen aan om waakzaam te blijven.', 'assets/scenes/scene1.png', 'Context'],
+        ['"We moeten constant alert zijn. Samen kunnen we deze cyberdreigingen bestrijden."', 'assets/scenes/scene1.png', 'Fred'],
+        ['Aan het einde van de dag spreekt hij tevreden: "We hebben opnieuw bewezen dat waakzaamheid het verschil maakt. Laten we blijven leren en groeien, en zo onze organisatie blijven beschermen."', 'assets/scenes/scene1.png', 'Context'],
     ],
     tweede_dag_risico: [
         ['"Ik ben te moe voor dit. Snel afhandelen en klaar."', 'assets/scenes/scene1.png', 'Fred'],
@@ -35,61 +40,59 @@ const slides = {
         ['"Even doorklikken en dan kan ik eindelijk rusten."', 'assets/scenes/scene1.png', 'Fred'],
         ['De hackers krijgen snel toegang tot zijn account, en de gevolgen zijn verstrekkend.', 'assets/scenes/scene1.png', 'Context'],
         ['Persoonlijke informatie wordt gestolen en misbruikt voor duistere doeleinden. Het slechte einde is een feit, en de organisatie is kwetsbaar voor verdere aanvallen.', 'assets/scenes/scene1.png', 'Context'],
-    ],
-    einde_voorzichtig: [
-        ['Ondanks de vermoeidheid op de tweede dag blijft Fred alert en scherp. Hij herkent de poging tot phishing en rapporteert deze onmiddellijk aan de IT-afdeling.', 'assets/scenes/scene1.png', 'Context'],
-        ['"Deze poging tot phishing is sluw, maar ik ben er niet ingetrapt."', 'assets/scenes/scene1.png', 'Fred'],
-        ['Fred deelt zijn ervaring met zijn \'collega\'s\' (ook al is hij alleen) en moedigt hen aan om waakzaam te blijven.', 'assets/scenes/scene1.png', 'Context'],
-        ['"We moeten constant alert zijn. Samen kunnen we deze cyberdreigingen bestrijden."', 'assets/scenes/scene1.png', 'Fred'],
-        ['Aan het einde van de dag spreekt hij tevreden: "We hebben opnieuw bewezen dat waakzaamheid het verschil maakt. Laten we blijven leren en groeien, en zo onze organisatie blijven beschermen."', 'assets/scenes/scene1.png', 'Context'],
-    ],
+    ]
 };
 
 let currentSlideArray = slides.begin;
 
 function typeWriter() {
-    const naam = currentSlideArray[currentSlide]?.[2] || '';
-    const subtitle = currentSlideArray[currentSlide]?.[0] || 'Geen ondertiteling gevonden.';
+    const [subtitle, , naam] = currentSlideArray[currentSlide] || ['', '', ''];
 
-    naamText.innerHTML = naam;
+    naamText.innerHTML = naam || '';
+
+    freezeEvents = true;
 
     if (i < subtitle.length) {
         subtitleText.innerHTML += subtitle.charAt(i);
         i++;
         setTimeout(typeWriter, 10);
+    } else {
+        freezeEvents = false;
     }
 }
 
 function updateSlideNumber() {
     slideNumberElement.innerHTML = currentSlide + 1;
-    if (currentSlideArray[currentSlide]) {
-        sceneElement.src = currentSlideArray[currentSlide][1];
-        sceneElement.alt = "Slide " + (currentSlide + 1);
-    }
+    const [_, image] = currentSlideArray[currentSlide] || ['', ''];
+    sceneElement.src = image;
+    sceneElement.alt = "Slide " + (currentSlide + 1);
 }
 
 function navigateSlide(direction) {
-    if (currentSlideArray === slides.eerste_dag_voorzichtig && currentSlide === currentSlideArray.length - 1) {
-        currentSlideArray = slides.tweede_dag;
-        currentSlide = 0;
-    }
-    else if (direction === 'previous' && currentSlide > 0) {
+    if (direction === 'previous' && currentSlide > 0) {
         currentSlide--;
-    } else if (direction === 'next' && currentSlide < currentSlideArray.length - 1) {
-        currentSlide++;
     } else if (direction === 'previous' && currentSlideArray === slides.begin && currentSlide === 0) {
         window.location.href = 'menu.html';
-    } else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.einde_voorzichtig[1][0]) || (currentSlideArray === slides.einde_voorzichtig && currentSlideArray[currentSlide][0] === slides.einde_voorzichtig[1][0])) {
+    }
+
+    if (direction === 'next' && currentSlide < currentSlideArray.length - 1) {
+        currentSlide++;
+    }
+    else if ((currentSlideArray === slides.tweede_dag_voorzichtig || currentSlideArray === slides.tweede_dag_risico) && currentSlide === currentSlideArray.length - 1) {
         window.location.href = 'credits.html';
-    } else if ((currentSlide === currentSlideArray.length - 1 && currentSlideArray[currentSlide][0] === slides.begin[1][0]) || (currentSlideArray === slides.begin && currentSlideArray[currentSlide][0] === slides.tweede_dag[1][0])) {
+    }
+
+    else if (currentSlideArray === slides.begin && currentSlide === currentSlideArray.length - 1) {
         optionsElement.style.display = "flex";
         freezeEvents = true;
+
         if (direction === 'risico') {
             if (currentSlideArray === slides.begin) {
                 optionsElement.style.display = "none";
                 freezeEvents = false;
                 currentSlideArray = slides.eerste_dag_risico;
-            } else if (currentSlideArray === slides.tweede_dag) {
+            }
+            else if (currentSlideArray === slides.tweede_dag) {
                 optionsElement.style.display = "none";
                 freezeEvents = false;
                 currentSlideArray = slides.tweede_dag_risico;
@@ -100,12 +103,32 @@ function navigateSlide(direction) {
                 optionsElement.style.display = "none";
                 freezeEvents = false;
                 currentSlideArray = slides.eerste_dag_voorzichtig;
-            } else if (currentSlideArray === slides.tweede_dag) {
+            }
+            else if (currentSlideArray === slides.tweede_dag) {
                 optionsElement.style.display = "none";
                 freezeEvents = false;
                 currentSlideArray = slides.tweede_dag_voorzichtig;
             }
             currentSlide = 0;
+        }
+    } else if (currentSlideArray === slides.eerste_dag_voorzichtig && currentSlide === currentSlideArray.length - 1) {
+        optionsElement.style.display = "flex";
+        freezeEvents = true;
+
+        if (direction === 'voorzichtig') {
+            optionsElement.style.display = "none";
+            freezeEvents = false;
+            currentSlideArray = slides.tweede_dag_voorzichtig;
+            currentSlide = 0;
+            typeWriter();
+            updateSlideNumber();
+        } else if (direction === 'risico') {
+            optionsElement.style.display = "none";
+            freezeEvents = false;
+            currentSlideArray = slides.tweede_dag_risico;
+            currentSlide = 0;
+            typeWriter();
+            updateSlideNumber();
         }
     }
 
