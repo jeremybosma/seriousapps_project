@@ -78,7 +78,7 @@ function navigateSlide(direction) {
     if (direction === 'next' && currentSlide < currentSlideArray.length - 1) {
         currentSlide++;
     }
-    else if ((currentSlideArray === slides.tweede_dag_voorzichtig || currentSlideArray === slides.tweede_dag_risico) && currentSlide === currentSlideArray.length - 1) {
+    else if ((currentSlideArray === slides.tweede_dag_voorzichtig || currentSlideArray === slides.tweede_dag_risico || currentSlideArray === slides.eerste_dag_risico) && currentSlide === currentSlideArray.length - 1) {
         window.location.href = 'credits.html';
     }
 

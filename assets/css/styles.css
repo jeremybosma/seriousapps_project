@@ -155,7 +155,6 @@ img {
     gap: 15px;
     text-align: center;
     backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.8); 
     z-index: 10000;
     animation: fade-in 0.2s ease-in;
 }
@@ -164,6 +163,7 @@ img {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -175,6 +175,10 @@ hr {
 }
 
 @media screen and (max-width: 768px) {
+    .options {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
     .subtitles {
         font-size: 16px;
         top: 65% !important;

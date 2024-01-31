@@ -42,6 +42,14 @@ section {
     height: 100%;
 }
 
+.text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
 button {
     background-color: var(--stroke);
     padding: 5px 10px;
