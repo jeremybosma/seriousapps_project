@@ -13,6 +13,10 @@ body {
     margin: 0;
 }
 
+a {
+    color: var(--text);
+}
+
 h1 {
     color: var(--primary-color);
 }
@@ -151,6 +155,7 @@ img {
     gap: 15px;
     text-align: center;
     backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.8); 
     z-index: 10000;
     animation: fade-in 0.2s ease-in;
 }

@@ -69,13 +69,13 @@ function updateSlideNumber() {
 }
 
 function navigateSlide(direction) {
-    if (direction === 'previous' && currentSlide > 0) {
+    if (currentSlideArray === slides.eerste_dag_voorzichtig && currentSlide === currentSlideArray.length - 1) {
+        currentSlideArray = slides.tweede_dag;
+        currentSlide = 0;
+    }
+    else if (direction === 'previous' && currentSlide > 0) {
         currentSlide--;
     } else if (direction === 'next' && currentSlide < currentSlideArray.length - 1) {
-        if (currentSlideArray === currentSlideArray[1] && currentSlide === currentSlideArray.length - 1) {
-            currentSlideArray = slides.tweede_dag;
-            currentSlide = 0;
-        }
         currentSlide++;
     } else if (direction === 'previous' && currentSlideArray === slides.begin && currentSlide === 0) {
         window.location.href = 'menu.html';
