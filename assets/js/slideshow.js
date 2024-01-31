@@ -21,10 +21,10 @@ const slides = {
     ],
     eerste_dag_risico: [
         ['"Ach, het zal wel meevallen. Ik neem wel wat meer risico vandaag."', 'assets/scenes/scene1.png', 'Fred'],
-        ['In zijn vermoeide toestand op de tweede dag merkt Fred de phishing-poging niet op. Hij klikt onbewust op de link en probeert in te loggen met zijn accountinformatie.', 'assets/scenes/scene1.png', 'Context'],
+        ['In zijn vermoeide toestand op de tweede dag merkt Fred de phishing-poging niet op. Hij klikt onbewust op de link en probeert in te loggen met zijn accountinformatie.', 'assets/scenes/scene2.png', 'Context'],
         ['"Even doorklikken en dan kan ik eindelijk rusten."', 'assets/scenes/scene2.png', 'Fred'],
         ['De hackers krijgen snel toegang tot zijn account, en de gevolgen zijn verstrekkend.', 'assets/scenes/scene1.png', 'Context'],
-        ['Persoonlijke informatie wordt gestolen en misbruikt voor duistere doeleinden. Het slechte einde is een feit, en de organisatie is kwetsbaar voor verdere aanvallen.', 'assets/scenes/scene1.png', 'Context'],
+        ['Persoonlijke informatie wordt gestolen en misbruikt voor duistere doeleinden. Het slechte einde is een feit, en de organisatie is kwetsbaar voor verdere aanvallen.', 'assets/scenes/scene3.png', 'Context'],
     ],
     tweede_dag_voorzichtig: [
         ['"Hmm, laten we dit eens goed bekijken."', 'assets/scenes/scene2.png', 'Fred'],
